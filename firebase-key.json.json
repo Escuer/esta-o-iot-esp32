@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "api-temperatura-a97ad",
+  "private_key_id": "6fc22cc89da23f55c87263b8a4bc1a60dec32f6e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCtlNvPRb46/8iL\nzZoqz5n34rootfnZCEqT65qe1xISBXk/anEZdKkGGLIw2WkdDwHbjk7BECnpNVVm\ndh0dMX8fAQOSHA9Dn6CZNwVsjN9rQG/lpdyrnoGUADbKps8gDtCkieGF0068hK0S\nfM11j02jQWO6md/EpJNStFni9be1HvvQKI/6cQ1149GlKJi44+him70M0QA8mj5z\nlvKtt3Hansm0dBAAqVCzD4M8Y6lZPFaerQOaw0xExxr9wDYubeDXOF4UbS2V0h5J\nOJg8+8owQEJj6vQRrKugLwOYYZQiLQTB2qh6TuD2rtCpMmpp1EX8KsYvZjoPe4/W\nepw7k0PDAgMBAAECggEAFfjtDCM9bcrOsC0Mp1T+c0ZEH1QjC38vsDgXgKTOg5vQ\nGcrCWfZjpkMTsfhLWc4lA42o2BUmNlWLI7xZehu3sOKCzl4hQS5LI383VLgjreK1\nvLb5TyYc1pxiUyu4tfZPdeHYO4WghrTavaeGUIEdKEhmNIrhgaBS38S283JRg1Uc\n+4Lg0qJFDwJ/hLbm6gehRTqe0xsdk7TToiHlwQ9nQfuA5Zd12jgMlHususXgvZsN\ndHI22fgDUoLHvo2Aaktql3oiwpb8NOKEhu1Ex8lQochG9GhYiv06fZkayNGWi88c\nKSYcyZAKXTqeGTQjF9S7Zk9d2wUoLKoNAYnJ0eyReQKBgQDljOq+Yu5HRudC0RJ6\nYPGNdQ4x2RP6QBcdN5VTUks7F9t03GbS1tgt7Loyx2rU6A6Pfv7LwXFnjnyNJjXE\niPgcbgOdT56DAk8hXfAGQlMfy5EnYuJZin4v7MD55qX7iezcy+P5vwxwzQbD+AF5\nTMM/IBucXo0K/POQaB6ssvl8eQKBgQDBlQRBslMHkJoHo7ZinaE6bsm+G2sVElJ3\nFxUvdDKQnCKUvpzstsHvC0OcM51fwUTjpc2qGSPk+UB14pyNzmJTEyTadkzHAFF4\n9T81XWYtc/o1ady3/Oj5Z5n9WmQF1UjdR40Yg/H3MqxFtEumvVEdEP/rSfljrpZ9\ntTztSN17GwKBgD/Ns1HH3cMiChWgVyp816ch6hgg5lSgi8wrLu5B6Xc7YlxRBqOD\n5AKf0gFbPG6BMcrg2aF42zSVfjkdbcR67bu5OHf5MW3ormXv3k9fEAu+YVI5QgDx\nZbGcdOcBHRGVfKjCY1N/rs2Lr125CW/Vzk81dXc5MKrlNC3nQt9tv7rBAoGAKqWP\nqIGGtTXwGRrCBXvAl0TtAQq9TokYzc+yBSBOO3mKTMapf6TLmMQcgv8D/qJvcM+I\nPZ8IP1uCDfZ8kukS1EZ1agOB6p1xVXqCEFmhNwZD6xyFWatIEBn43M3bF0XjpYwr\n02jOF618MmcD+5ndks+58bX8US+XS95vq77PvF0CgYEAwHNOJY6uzo1zbFZ8+1Rt\nEipHn4M3C2V07cBQrYTnWSm6dGVr3AzyzvyrC1lkow5+wJ+aGNhNcuVjmFQ9rstk\nRcWCjpXXdCSdUG8kPpXUDJj/ktJgeQlT2OeUzYBjJF31+M2fIxcDJgkbscu4Hllp\njNRNRG9wY7VQW8Lr1W2m76w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@api-temperatura-a97ad.iam.gserviceaccount.com",
+  "client_id": "101938925935014067064",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40api-temperatura-a97ad.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
