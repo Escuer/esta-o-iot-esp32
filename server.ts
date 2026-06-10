@@ -1,20 +1,15 @@
 import express, { type Request, type Response } from 'express';
-// Importações no padrão moderno do Firebase
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
 const app = express();
 const PORTA = 3000;
-
-// Puxa as credenciais do arquivo
 const serviceAccount = require('./firebase-key.json');
 
-// Inicializa o SDK do Firebase
 initializeApp({
   credential: cert(serviceAccount)
 });
 
-// Cria a conexão direta com o banco
 const db = getFirestore();
 
 app.use(express.json());
@@ -26,7 +21,6 @@ app.post('/api/temperatura', async (req: Request, res: Response) => {
     const novaLeitura = {
       temperatura: temperatura,
       sensor: sensor,
-      // O Timestamp agora é chamado direto do FieldValue importado
       dataHora: FieldValue.serverTimestamp() 
     };
 
