@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard IoT | Histórico em Tempo Real</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            background-color: #121212; color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        h1 { color: #00e676; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .painel {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 15px; max-width: 1000px; width: 100%; margin-bottom: 30px;
+        }
+        .card {
+            background-color: #1e1e1e; border-radius: 8px; padding: 20px;
+            text-align: center; border-top: 3px solid #333;
+        }
+        .card h2 { font-size: 1rem; color: #aaaaaa; margin-top: 0; }
+        .valor { font-size: 2rem; font-weight: bold; margin-top: 10px; }
+        
+        #card-temp { border-color: #ff9800; } #val-temp { color: #ff9800; }
+        #card-luz { border-color: #ffd600; } #val-luz { color: #ffd600; }
+        #card-dist { border-color: #00b0ff; } #val-dist { color: #00b0ff; }
+        #card-mov { border-color: #4caf50; } #val-mov { color: #4caf50; }
+        
+        .perigo { border-color: #f44336 !important; animation: piscar 1s infinite; }
+        .texto-perigo { color: #f44336 !important; font-size: 1.5rem; }
+        
+        @keyframes piscar { 0%, 100% { box-shadow: 0 0 5px #f44336; } 50% { box-shadow: 0 0 20px #f44336; } }
+
+        
+        .grafico-container {
+            width: 100%; max-width: 1000px; background-color: #1e1e1e;
+            border-radius: 8px; padding: 20px; box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Iot
+
+    </h1>
+
+    <div class="painel">
+        <div class="card" id="card-temp"><h2>Temperatura</h2><div class="valor"><span id="val-temp">--</span>°C</div></div>
+        <div class="card" id="card-luz"><h2>Luz Ambiente</h2><div class="valor" id="val-luz">--</div></div>
+        <div class="card" id="card-dist"><h2>Radar (Distância)</h2><div class="valor"><span id="val-dist">--</span> cm</div></div>
+        <div class="card" id="card-mov"><h2>Segurança</h2><div class="valor" id="val-mov">Buscando...</div></div>
+    </div>
+
+    <div class="grafico-container">
+        <canvas id="graficoTemperatura"></canvas>
+    </div>
+
+    <script>
+        
+        const ctx = document.getElementById('graficoTemperatura').getContext('2d');
+        const grafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [], 
+                datasets: [{
+                    label: 'Temperatura (°C)',
+                    data: [], 
+                    borderColor: '#ff9800',
+                    backgroundColor: 'rgba(255, 152, 0, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4, 
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { ticks: { color: '#aaaaaa' } },
+                    y: { ticks: { color: '#aaaaaa' }, min: 10, max: 40 }
+                },
+                plugins: { legend: { labels: { color: '#ffffff' } } }
+            }
+        });
+
+        
+        async function buscarDadosDaAPI() {
+            try {
+                const resposta = await fetch('http://192.168.0.124:3000/api/telemetria/atual');
+                const dados = await resposta.json();
+
+                
+                document.getElementById('val-temp').innerText = dados.temperatura;
+                document.getElementById('val-luz').innerText = dados.luz_ambiente;
+                document.getElementById('val-dist').innerText = dados.distancia_cm;
+
+            
+                const cardMov = document.getElementById('card-mov');
+                const textoMov = document.getElementById('val-mov');
+                if (dados.movimento_detectado) {
+                    textoMov.innerText = "INTRUSO!";
+                    textoMov.className = "valor texto-perigo";
+                    cardMov.className = "card perigo";
+                } else {
+                    textoMov.innerText = "Seguro";
+                    textoMov.className = "valor";
+                    cardMov.className = "card";
+                }
+
+        
+                const horaAtual = new Date().toLocaleTimeString();
+                
+                grafico.data.labels.push(horaAtual); 
+                grafico.data.datasets[0].data.push(dados.temperatura); 
+
+                
+                if (grafico.data.labels.length > 15) {
+                    grafico.data.labels.shift();
+                    grafico.data.datasets[0].data.shift();
+                }
+
+                grafico.update(); 
+                
+            } catch (erro) {
+                console.error("Erro de conexão:", erro);
+            }
+        }
+
+        
+        buscarDadosDaAPI();
+        
+    
+        setInterval(buscarDadosDaAPI, 5000);
+    </script>
+</body>
+</html>
