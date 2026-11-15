@@ -1,13 +1,12 @@
 <<<<<<< HEAD
 import express, { Request, Response } from 'express';
-// Importações no formato moderno do Firebase
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
-// O nome do arquivo corrigido que você encontrou
+
 const serviceAccount = require('./firebase-key.json.json'); 
 
-// Inicializa o Firebase do jeito novo
+
 =======
 import express, { type Request, type Response } from 'express';
 import { initializeApp, cert } from 'firebase-admin/app';
@@ -73,9 +72,7 @@ app.post('/api/telemetria', async (req: Request, res: Response) => {
   }
 });
 
-// ==========================================
-// ROTA GET: Dashboard HTML pede a última leitura
-// ==========================================
+
 app.get('/api/telemetria/atual', async (req: Request, res: Response) => {
   try {
     const snapshot = await db.collection('telemetria')
